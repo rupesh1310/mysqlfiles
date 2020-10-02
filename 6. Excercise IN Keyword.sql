@@ -17,6 +17,6 @@ WHERE customerid IN (7888, 1082, 12808, 9623);
 */
 
 
--- SELECT COUNT(id)
--- FROM city
--- WHERE district IN ('Zuid-Holland', 'Noord-Brabant', 'Utrecht');
+SELECT COUNT(id)
+FROM city
+WHERE district IN ('Zuid-Holland', 'Noord-Brabant', 'Utrecht');
