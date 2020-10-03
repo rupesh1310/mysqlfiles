@@ -5,8 +5,8 @@
 * Sample output: https://imgur.com/vXs4093
 */
 
--- SELECT emp_no, first_name, EXTRACT (YEAR FROM (birth_date)) as "age" FROM employees
--- WHERE first_name ILIKE 'M%';
+SELECT emp_no, first_name, EXTRACT (YEAR FROM (birth_date)) as "age" FROM employees
+WHERE first_name ILIKE 'M%';
 
 
 /*
