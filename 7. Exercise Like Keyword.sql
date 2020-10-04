@@ -17,8 +17,8 @@ WHERE first_name ILIKE 'M%';
 */
 
 
--- SELECT count(emp_no) FROM employees
--- WHERE first_name ILIKE 'A%R';
+SELECT count(emp_no) FROM employees
+WHERE first_name ILIKE 'A%R';
 
 
 /*
