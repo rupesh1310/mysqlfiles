@@ -25,6 +25,6 @@ ORDER BY birth_date;
 * Question: Sort employees who's name starts with a "k" by hire_date
 */
 
--- SELECT * FROM employees
--- WHERE first_name ILIKE 'k%'
--- ORDER BY hire_date;
+SELECT * FROM employees
+WHERE first_name ILIKE 'k%'
+ORDER BY hire_date;
