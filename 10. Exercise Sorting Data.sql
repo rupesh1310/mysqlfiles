@@ -15,8 +15,8 @@ ORDER BY first_name ASC, last_name DESC;
 * Question: Sort employees by age
 */
 
--- SELECT * FROM employees
--- ORDER BY birth_date;
+SELECT * FROM employees
+ORDER BY birth_date;
 
 
 /*
