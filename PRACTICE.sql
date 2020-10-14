@@ -277,19 +277,19 @@ ANS- SELECT *
 	 	EXTRACT (
 	 		year
 	 		FROM
-	 			INTERVAL '5 years 20 months'
-	 	);
+-- 	 			INTERVAL '5 years 20 months'
+-- 	 	);
 
 
 
-37.   DISTINCT
-ANS- SELECT DISTINCT salary, from_date FROM salaries;
+-- 37.   DISTINCT
+-- ANS- SELECT DISTINCT salary, from_date FROM salaries;
 
 
 
-38. Sorting Data
-ANS- SELECT * FROM customers
-	 ORDER BY name, lastName DESC;
+-- 38. Sorting Data
+-- ANS- SELECT * FROM customers
+-- 	 ORDER BY name, lastName DESC;
 
-	 SELECT first_name, last_name FROM employees
-	 ORDER BY first_name DESC, last_Name DESC;
+-- 	 SELECT first_name, last_name FROM employees
+-- 	 ORDER BY first_name DESC, last_Name DESC;
