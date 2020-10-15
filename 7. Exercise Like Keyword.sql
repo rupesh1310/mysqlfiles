@@ -54,5 +54,5 @@ WHERE zip::text LIKE '2_1%';
 * Expected output: https://imgur.com/AVe6G4c
 */
 
--- SELECT coalesce(state, 'No State') as "State" FROM customers
--- WHERE phone::text LIKE '302%';
+SELECT coalesce(state, 'No State') as "State" FROM customers
+WHERE phone::text LIKE '302%';
