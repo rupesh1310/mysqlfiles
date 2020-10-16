@@ -41,8 +41,8 @@ WHERE zip::text LIKE '%2';
 * Expected output: 109 
 */
 
--- SELECT count(customerid) FROM customers
--- WHERE zip::text LIKE '2_1%';
+SELECT count(customerid) FROM customers
+WHERE zip::text LIKE '2_1%';
 
 
 
