@@ -29,8 +29,8 @@ WHERE first_name ILIKE 'A%R';
 */
 
 
--- SELECT count(customerid) FROM customers
--- WHERE zip::text LIKE '%2';
+SELECT count(customerid) FROM customers
+WHERE zip::text LIKE '%2';
 
 
 
