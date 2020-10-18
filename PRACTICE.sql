@@ -586,3 +586,9 @@ ANS- SELECT
 	 FROM salaries
 	 JOIN dept_emp USING (emp_no)
 	 JOIN departments AS d USING (dept_no)
+
+
+
+51. Order By Acting Strange
+
+ANS- 
