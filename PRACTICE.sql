@@ -293,3 +293,8 @@ ANS- SELECT * FROM customers
 
 	 SELECT first_name, last_name FROM employees
 	 ORDER BY first_name DESC, last_Name DESC;
+
+
+
+39. Multi Table SELECT
+ANS- 
