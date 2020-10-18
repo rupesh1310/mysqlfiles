@@ -303,3 +303,6 @@ ANS- SELECT a.emp_no,
 	 FROM employees as a, salaries as b
 	 WHERE a.emp_no = b.emp_no;
 
+ 
+	 SELECT a.emp_no, b.salary FROM employees AS a, salaries AS b
+	 WHERE a.emp_no = b.emp_no
