@@ -424,3 +424,15 @@ ANS- SELECT dept_no, COUNT(emp_no)
 	 FROM dept_emp
 	 -- ORDER BY dept_no
 	 GROUP BY dept_no;
+
+	 -- Order of operation
+	 -- FROM->WHERE->GROUP BY->HAVING->SELECT->ORDER
+
+
+44. HAVING keyword
+
+ANS- SELECT col1, COUNT(col2)
+	 FROM <table>
+	 WHERE col2 > X
+	 GROUP BY col1
+	 HAVING col1 === Y;
