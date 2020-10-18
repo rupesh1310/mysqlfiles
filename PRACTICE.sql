@@ -546,3 +546,23 @@ ANS- SELECT EXTRACT (YEAR FROM orderdate) AS "year",
 	 		EXTRACT (YEAR FROM orderdate),
 	 		EXTRACT (MONTH FROM orderdate),
 	 		EXTRACT (DAY FROM orderdate)
+
+
+
+
+49. WINDOW
+
+ANS- --Window functions create a new column based on functions performed
+	--on a subset or "WINDOW" of the data
+
+	window_function(arg1, arg2,..) OVER (
+		[PARTITION BY partition_expression]
+		[ORDER BY sort_expression [ASC | DESC] [NULLS {FIRST | LAST}] )
+
+
+	SELECT
+		*,
+		MAX(salary) OVER()
+	FROM salaries
+	-- LIMIT 100;
+	WHERE salary < 70000
