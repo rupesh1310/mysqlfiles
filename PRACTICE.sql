@@ -471,4 +471,78 @@ ANS- SELECT emp_no, MAX(from_date), MAX(salary)
 	 HAVING MAX(from_date);
 		 	
 
-47. 
+
+47.  Grouping Sets
+
+ANS- --UNION
+	 --1
+	 SELECT col1, SUM(col2)
+	 FROM table
+	 GROUP BY col1
+
+	 UNION
+
+	 SELECT SUM(col2)
+	 FROM table
+
+
+	 --2
+	 SELECT NULL AS "prod_id", sum(ol.quantity)
+	 FROM orderlines AS ol
+
+	 UNION
+
+	 SELECT prod_id AS "prod_id", sum(ol.quantity)
+	 FROM orderlines AS ol
+	 GROUP BY prod_id 
+	 ORDER BY prod_id DESC;
+
+
+	 --3
+	 -- SELECT NULL AS "prod_id", sum(ol.quantity)
+	 -- FROM orderlines AS ol
+
+	 -- UNION
+
+	 SELECT prod_id AS "prod_id", orderlineid, sum(ol.quantity)
+	 FROM orderlines AS ol
+	 GROUP BY 
+	 	GROUPING SETS (
+	 		(),
+	 		(prod_id),
+	 		(orderlineid)
+	 		) 
+	 ORDER BY prod_id, orderlineid DESC;
+
+
+
+
+48. Rollup
+
+ANS- SELECT EXTRACT (YEAR FROM orderdate) AS "year",
+			EXTRACT (MONTH FROM orderdate) AS "month",
+			EXTRACT (DAY FROM orderdate) AS "day",
+			sum(ol.quantity)
+	 FROM orderlines AS ol
+	 GROUP BY 
+	 	GROUPING SETS (
+	 		(EXTRACT (YEAR FROM orderdate)),
+	 		(
+	 			EXTRACT (YEAR FROM orderdate),
+	 			EXTRACT (MONTH FROM orderdate)
+
+	 		),
+	 		(
+	 			EXTRACT (YEAR FROM orderdate),
+	 			EXTRACT (MONTH FROM orderdate),
+	 			EXTRACT (DAY FROM orderdate)
+	 		),
+
+		 		(EXTRACT (MONTH FROM orderdate)),
+		 		(EXTRACT (DAY FROM orderdate)),
+		 		()
+	 		)
+	 	ORDER BY 
+	 		EXTRACT (YEAR FROM orderdate),
+	 		EXTRACT (MONTH FROM orderdate),
+	 		EXTRACT (DAY FROM orderdate)
