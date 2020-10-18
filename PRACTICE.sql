@@ -334,5 +334,6 @@ ANS- SELECT a.emp_no,
 	 SELECT a.emp_no, b.salary, b.from_date, c.title
 	 FROM employees AS a
 	 INNER JOIN salaries AS b ON b.emp_no = a.emp_no
-	 INNER JOIN titles AS c ON c.emp_no = a.emp_no AND c.from_date = b.from_date
+	 INNER JOIN titles AS c ON c.emp_no = a.emp_no
+	 AND (b.from_date + INTERVAL '2 days') = c.from_date
 	 ORDER BY a.emp_no ASC, b.from_date ASC;
