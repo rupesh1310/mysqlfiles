@@ -436,3 +436,13 @@ ANS- SELECT col1, COUNT(col2)
 	 WHERE col2 > X
 	 GROUP BY col1
 	 HAVING col1 === Y;
+
+
+
+	 SELECT d.dept_name, COUNT(e.emp_no) AS "# of employees"
+	 FROM employees AS e
+	 INNER JOIN dept_emp AS de ON de.emp_no = e.emp_no
+	 INNER JOIN departments AS d ON de.dept_no = dept_no
+	 WHERE e.gender = 'F'
+	 GROUP BY d.dept_name
+	 HAVING COUNT(e.emp_no) > 25000
