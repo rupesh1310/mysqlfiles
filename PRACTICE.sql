@@ -399,3 +399,11 @@ ANS- SELECT *
 	 FROM employees AS emp
 	 LEFT JOIN dept_manager AS dep ON emp.emp_no = dep.emp_no
 	 WHERE dep.emp_no IS NULL;
+
+
+	 SELECT a.emp_no, b.salary, COALESCE(c.title, 'no title change')
+	 FROM employees AS a
+	 INNER JOIN salaries AS b ON b.emp_no = a.emp_no
+	 LEFT JOIN titles AS c ON c.emp_no = a.emp_no
+	 AND (c.from_date = b.from_date OR c.from_date = b.from_date + INTERVAL '2 days')
+	 ORDER BY a.emp_no;
