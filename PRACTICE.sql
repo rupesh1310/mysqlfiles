@@ -407,3 +407,9 @@ ANS- SELECT *
 	 LEFT JOIN titles AS c ON c.emp_no = a.emp_no
 	 AND (c.from_date = b.from_date OR c.from_date = b.from_date + INTERVAL '2 days')
 	 ORDER BY a.emp_no;
+
+
+
+43. Less Common Joins
+
+ANS- 
