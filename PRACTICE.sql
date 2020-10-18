@@ -300,6 +300,6 @@ ANS- SELECT * FROM customers
 ANS- SELECT a.emp_no,
 	 		CONCAT(a.first_name, a.last_name) as "name",
 	 		b.salary
-	 FROM employees as a, salaries as b;
+	 FROM employees as a, salaries as b
+	 WHERE a.emp_no = b.emp_no;
 
-	 
