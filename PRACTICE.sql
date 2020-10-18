@@ -297,4 +297,9 @@ ANS- SELECT * FROM customers
 
 
 39. Multi Table SELECT
-ANS- 
+ANS- SELECT a.emp_no,
+	 		CONCAT(a.first_name, a.last_name) as "name",
+	 		b.salary
+	 FROM employees as a, salaries as b;
+
+	 
