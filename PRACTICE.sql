@@ -555,6 +555,11 @@ ANS- SELECT EXTRACT (YEAR FROM orderdate) AS "year",
 ANS- --Window functions create a new column based on functions performed
 	--on a subset or "WINDOW" of the data
 
+
+	--PARTITION BY -> Is used to divide rows into groups to apply the
+	--				functions against.
+	-- example -> AVG(s.salary) OVER() AS "average global salary"
+
 	window_function(arg1, arg2,..) OVER (
 		[PARTITION BY partition_expression]
 		[ORDER BY sort_expression [ASC | DESC] [NULLS {FIRST | LAST}] )
@@ -566,3 +571,18 @@ ANS- --Window functions create a new column based on functions performed
 	FROM salaries
 	-- LIMIT 100;
 	WHERE salary < 70000
+
+
+
+
+50. PARTITION BY
+
+ANS- SELECT
+		*,
+		-- d.dept_name,
+		AVG(salary) OVER(
+			PARTITION BY d.dept_name
+			)
+	 FROM salaries
+	 JOIN dept_emp USING (emp_no)
+	 JOIN departments AS d USING (dept_no)
