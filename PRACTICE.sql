@@ -316,3 +316,16 @@ ANS- SELECT a.emp_no,
 	 FROM employees as a
 	 INNER JOIN salaries as b ON b.emp_no = a.emp_no
 	 ORDER BY a.emp_no ASC;
+
+
+	 --TITLE CHANGE EXAMPLE
+	 SELECT a.emp_no,
+	 		CONCAT(a.first_name, a.last_name) as "name",
+	 		b.salary,
+	 		c.title,
+	 		c.from_date AS "promoted on"
+	 FROM employees AS a
+	 INNER JOIN salaries AS b ON a.emp_no = b.emp_no
+	 INNER JOIN titles AS c ON c.emp_no = a.emp_no
+	 AND c.from_date = (b.from_date + interval '2 days')
+	 ORDER BY a.emp_no;
