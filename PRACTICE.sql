@@ -416,3 +416,11 @@ ANS- SELECT e.emp_no, e.first_name, d.dept_name
 	 FROM employees AS e
 	 INNER JOIN dept_emp AS de USING(emp_no)
 	 INNER JOIN departments AS d USING(dept_no)
+
+
+43. GROUP BY
+
+ANS- SELECT dept_no, COUNT(emp_no)
+	 FROM dept_emp
+	 -- ORDER BY dept_no
+	 GROUP BY dept_no;
