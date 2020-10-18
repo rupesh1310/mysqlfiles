@@ -446,3 +446,29 @@ ANS- SELECT col1, COUNT(col2)
 	 WHERE e.gender = 'F'
 	 GROUP BY d.dept_name
 	 HAVING COUNT(e.emp_no) > 25000
+
+
+
+45.  Ordering Grouped Data
+
+ANS- SELECT d.dept_name, COUNT(e.emp_no) AS "# of employees"
+	 FROM employees AS e
+	 INNER JOIN dept_emp AS de ON de.emp_no = e.emp_no
+	 INNER JOIN departments AS d ON de.dept_no = dept_no
+	 GROUP BY d.dept_name
+	 ORDER BY COUNT(e.emp_no) DESC
+
+
+46. Group By Mental Model
+
+ANS- SELECT emp_no, MAX(from_date), MAX(salary)
+	 FROM salaries
+	 GROUP BY emp_no;
+
+	 SELECT emp_no, MAX(from_date)
+	 FROM salaries
+	 GROUP BY emp_no
+	 HAVING MAX(from_date);
+		 	
+
+47. 
