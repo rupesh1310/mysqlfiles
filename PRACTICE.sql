@@ -297,6 +297,7 @@ ANS- SELECT * FROM customers
 
 
 39. Multi Table SELECT
+
 ANS- SELECT a.emp_no,
 	 		CONCAT(a.first_name, a.last_name) as "name",
 	 		b.salary
@@ -310,6 +311,7 @@ ANS- SELECT a.emp_no,
 
 
 40. Inner Join
+
 ANS- SELECT a.emp_no,
 	 		CONCAT(a.first_name, a.last_name) as "name",
 	 		b.salary
@@ -370,4 +372,30 @@ ANS- SELECT a.emp_no,
 
 
 
-41. 
+41. SELF JOIN
+
+ANS- SELECT a.id, a.name AS "employee", b.name AS "supervisor name"
+	 FROM employee AS a, employee AS B
+	 WHERE a.supervisorId = b.id;
+
+
+	 SELECT a.id, a.name AS "employee", b.name 
+	 AS "supervisor name"
+	 FROM employee AS a
+	 INNER JOIN employee AS b
+	 ON a.supervisorId = b.id;
+
+
+
+42. Outer Join
+
+ANS- SELECT * 
+	 FROM <table A> AS a
+	 LEFT [OUTER] JOIN <table B> AS b
+	 ON a.id = b.id;
+
+	 --YOU WANT TO KNOW HOW MANY EMPLOYEES AREN'T MANAGERS
+	 SELECT COUNT(emp.emp_no)
+	 FROM employees AS emp
+	 LEFT JOIN dept_manager AS dep ON emp.emp_no = dep.emp_no
+	 WHERE dep.emp_no IS NULL;
