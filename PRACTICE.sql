@@ -314,4 +314,5 @@ ANS- SELECT a.emp_no,
 	 		CONCAT(a.first_name, a.last_name) as "name",
 	 		b.salary
 	 FROM employees as a
-	 INNER JOIN salaries as b ON b.emp_no = a.emp_no;
+	 INNER JOIN salaries as b ON b.emp_no = a.emp_no
+	 ORDER BY a.emp_no ASC;
