@@ -337,3 +337,37 @@ ANS- SELECT a.emp_no,
 	 INNER JOIN titles AS c ON c.emp_no = a.emp_no
 	 AND (b.from_date + INTERVAL '2 days') = c.from_date
 	 ORDER BY a.emp_no ASC, b.from_date ASC;
+
+
+	 SELECT a.emp_no, b.salary, b.from_date, c.title
+	 FROM employees AS a
+	 INNER JOIN salaries AS b ON b.emp_no = a.emp_no
+	 INNER JOIN titles AS c 
+	 	ON c.emp_no = a.emp_no
+	 	AND (
+	 		b.from_date = c.from_date
+	 		OR (b.from_date + INTERVAL '2 days') = c.from_date
+	 		)
+	 ORDER BY a.emp_no ASC, b.from_date ASC;
+
+
+
+	 --SOLUTION
+	 SELECT a.emp_no,
+	 		CONCAT(a.first_name, a.last_name) AS "name",
+	 		b.salary,
+	 		coalesce(c.title, 'No title change'),
+	 		COALESCE(c.from_date::text, '-') AS "title taken on"
+	 FROM employees AS a
+	 INNER JOIN salaries AS b ON a.emp_no = b.emp_no
+	 INNER JOIN titles AS c
+	 ON c.emp_no = a.emp_no AND(
+	 	C.from_date = (b.from_date + INTERVAL '2 days') OR
+	 	c.from_date = b.from_date
+	 	)
+	 ORDER BY a.emp_no;
+
+
+
+
+41. 
