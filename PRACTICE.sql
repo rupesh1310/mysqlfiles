@@ -175,3 +175,121 @@ ANS- SELECT <column>
 
 	 SELECT * FROM "Student"
 	 WHERE (age = null) OR (not age = null);
+
+
+
+25. BETWEEN + AND
+
+
+26. IN keyword
+ANS- SELECT * FROM <table>
+	 WHERE <column> IN (value1, value2,...)
+
+	 SELECT * FROM employees
+	 WHERE emp_no IN(100001, 100006, 11008);
+
+27. LIKE
+ANS- SELECT first_name FROM employees
+	 WHERE first_name LIKE 'M%';
+
+	 -- In order to use like we need to build 
+	 -- patterns to match.
+
+28. CAST
+	 --1 method
+ANS- CAST(salary AS text);
+	--2 method
+	 salary::text;
+
+29. ILIKE
+ANS- name ILIKE 'MO%';
+	 
+	 SELECT * FROM employees
+	 WHERE first_name LIKE 'G%er';
+
+	 SELECT * FROM employees
+	 WHERE first_name ILIKE 'G%ger';
+
+30. Dates And Timezones
+ANS- SHOW TIMEZONE;
+	 SET TIMEZONE 'UTC';
+
+
+31. TIMESTAMPS
+ANS- SELECT now();
+	 
+	INSERT INTO timezones VALUES(
+			TIMESTAMP WITHOUT TIME ZONE '2001-01-01 10:00:00-05',
+			TIMESTAMP WITH TIME ZONE '2001-01-01 10:00:00-05'
+	);
+	
+
+	 CREATE TABLE timezones (
+	 	ts TIMESTAMP WITHOUT TIME ZONE,
+	 	tz TIMESTAMP WITH TIME ZONE
+	 );
+
+	 SELECT * FROM timezones;
+
+
+
+32. DATE FUNCTIONS
+ANS- SELECT NOW()::date;
+	 SELECT CURRENT_DATE;
+	 -- FORMATTING DATES
+	 SELECT TO_CHAR(CURRENT_DATE, 'dd/mm/yyyy');
+
+
+
+33. Date Difference And Casting
+ANS- SELECT  NOW() - '1800/01/01';
+	 SELECT date '1800/01/01';
+
+
+34. Age Calculation
+ANS- SELECT AGE('1800/01/01');
+	 -- OUTPUT - ERROR
+	 SELECT AGE(date '1800-01-01');
+	 -- OUTPUT - 220years 4 months
+
+	 -- FOR MY AGE
+	 SELECT AGE(date '1992/11/13', date '1800/01/01');
+
+
+35. Extracting Information
+ANS- SELECT EXTRACT (DAY FROM date '1996/10/13') AS DAY;
+	 SELECT DATE_TRUNC('year', date '1996/10/13');
+
+
+
+36.  Intervals
+ANS- SELECT * 
+	 FROM orders
+	 WHERE purchaseDate <= now() - interval '30 days'
+
+
+	 INTERVAL '1 year 2 months 3 days';
+	 INTERVAL '2 weeks ago';
+	 INTERVAL '1 year 3 hours 20 minutes';
+
+
+	 SELECT
+	 	EXTRACT (
+	 		year
+	 		FROM
+	 			INTERVAL '5 years 20 months'
+	 	);
+
+
+
+37.   DISTINCT
+ANS- SELECT DISTINCT salary, from_date FROM salaries;
+
+
+
+38. Sorting Data
+ANS- SELECT * FROM customers
+	 ORDER BY name, lastName DESC;
+
+	 SELECT first_name, last_name FROM employees
+	 ORDER BY first_name DESC, last_Name DESC;
