@@ -306,3 +306,4 @@ ANS- SELECT a.emp_no,
  
 	 SELECT a.emp_no, b.salary FROM employees AS a, salaries AS b
 	 WHERE a.emp_no = b.emp_no
+	 ORDER BY a.emp_no;
