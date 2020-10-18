@@ -410,6 +410,9 @@ ANS- SELECT *
 
 
 
-43. Less Common Joins
+42. USING Keyword
 
-ANS- 
+ANS- SELECT e.emp_no, e.first_name, d.dept_name
+	 FROM employees AS e
+	 INNER JOIN dept_emp AS de USING(emp_no)
+	 INNER JOIN departments AS d USING(dept_no)
