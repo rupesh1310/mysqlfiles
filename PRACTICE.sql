@@ -599,4 +599,9 @@ ANS- SELECT emp_no,
 	 FROM salaries
 
 
-52. 
+52. Using Framing in window function
+
+ANS- --When using a frame clause in a window function we can
+	 ---create a sub-range or frame.
+
+	 
