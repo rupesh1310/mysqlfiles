@@ -685,3 +685,12 @@ ANS- --Return a value evaluated against the first row within its partition
 	 	 	AND UNBOUNDED FOLLOWING
 	 	 	)
 	 	 FROM products
+
+	 	 SELECT
+	 	 prod_id,
+	 	 price,
+	 	 category,
+	 	 min(price) OVER(PARTITION BY category) AS "cheapest in category"
+	 	 FROM products
+
+
