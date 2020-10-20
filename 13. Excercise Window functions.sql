@@ -54,4 +54,4 @@ COUNT(t.id) OVER(
 FROM regions AS r
 JOIN departments AS d ON r.code = d.region
 JOIN towns AS t ON d.code = t.department
-ORDER BY r.id; 
+ORDER BY r.id;

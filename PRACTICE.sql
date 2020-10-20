@@ -753,3 +753,79 @@ ANS- --Number the current row within the partition starting from
 	 	row_number() OVER(PARTITION BY category ORDER BY price) AS "position in
 	 category by price"
 	 FROM products
+
+
+
+58. Conditional Statements
+
+ANS- SELECT a,
+				CASE WHEN a=1 THEN 'one'
+					 WHEN a=2 THEN 'TWO'
+					 ELSE 'other'
+				END
+	 FROM test;
+
+
+	 --2
+	 SELECT
+	 	o.orderid,
+	 	o.customerid,
+	 	CASE
+	 		WHEN o.customerid = 1
+	 		THEN 'my first customer'
+	 		ELSE 'not my customer'
+	 	END,
+	 	o.netamount
+	 	FROM orders AS o
+	 	ORDER BY o.customerid
+
+
+	 	--3 CONDITIONAL FILTER
+	 	SELECT
+	 		o.orderid,
+	 		o.customerid,
+	 		o.netamount
+	 	FROM orders AS o
+	 	WHERE CASE WHEN o.customerid > 10 THEN o.netamount < 100 ELSE o.netamount >
+	 	100 END
+	 	ORDER BY o.customerid
+
+
+	 	--4 IN AN AGGREGATE FUNCTION
+	 	SELECT
+	 		SUM(
+	 			CASE
+	 				WHEN o.netamount < 100
+	 				then -100
+	 				else o.netamount
+	 				end 
+	 			) as "returns",
+	 			SUM(o.netamount) as "normal total"
+	 		FROM order as o
+
+
+
+
+
+59. NULLIF 
+
+ANS- NULLIF(val_1, val_2)
+	 NULLIF(0, 0) --NULL
+	 NULLIF('ABC', 'DEF') --ABC
+
+
+
+
+60. VIEW SYNTAX
+
+ANS- --CREATING A VIEW
+	 CREATE VIEW view_name AS query;
+
+	 --UPDATING A VIEW
+	 CREATE OR REPLACE <view name>
+	 AS query;
+
+	 --RENAME
+	 ALTER VIEW <view name> RENAME TO <view name>;
+
+	 
