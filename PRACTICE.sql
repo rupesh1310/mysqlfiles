@@ -604,4 +604,17 @@ ANS- SELECT emp_no,
 ANS- --When using a frame clause in a window function we can
 	 ---create a sub-range or frame.
 
-	 
+	 PARTITION BY category ORDER BY price RANGE BETWEEN UNBOUNDED PRECEDING
+	 AND CURRENT ROW
+
+	 SELECT emp_no,
+	 		salary,
+	 		COUNT(salary) OVER(
+	 			PARTITION BY emp_no
+	 			ORDER BY salary
+	 			-- RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+	 			-- ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+	 			RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+	 			
+	 		)
+	 FROM salaries
