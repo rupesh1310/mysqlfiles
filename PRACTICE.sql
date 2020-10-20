@@ -828,4 +828,12 @@ ANS- --CREATING A VIEW
 	 --RENAME
 	 ALTER VIEW <view name> RENAME TO <view name>;
 
+	 --DELETE A VIEW
+	 DROP VIEW [ IF EXISTS ] <view name>
+
+
+
+61. USING VIEWS
+
+ANS- --CURRENT SALARY
 	 
