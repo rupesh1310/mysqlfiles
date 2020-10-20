@@ -694,3 +694,62 @@ ANS- --Return a value evaluated against the first row within its partition
 	 	 FROM products
 
 
+
+
+55. LAST_VALUE
+
+ANS-  SELECT
+		 prod_id,
+		 price,
+		 category,
+		 LAST_VALUE(price) OVER(
+		 	PARTITION BY category ORDER BY price
+		 	RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+		 )
+		 AS "most expensive in category"
+	  FROM products
+
+
+
+
+
+56. SUM
+
+ANS- SELECT
+		o.orderid,
+		o.customerid,
+		o.netamount,
+		SUM(o.netamount) OVER(
+			PARTITION BY o.customerid
+			ORDER BY o.orderid
+			) AS "cum sum"
+		FROM orders AS o
+		ORDER BY o.customerid
+
+
+		-- EXECUTION QUERY
+		SELECT
+			o.orderid,
+			o.customerid,
+			o.netamount,
+			SUM(o.netamount) OVER(
+				PARTITION BY o.customerid
+				ORDER BY o.orderid
+				) AS "cum sum"
+		FROM orders AS o
+		ORDER BY o.customerid
+
+
+
+57. ROW_NUMBER
+
+ANS- --Number the current row within the partition starting from
+	 --1 regardless of framing
+
+	 SELECT
+	 	prod_id,
+	 	price,
+	 	category,
+	 	row_number() OVER(PARTITION BY category ORDER BY price) AS "position in
+	 category by price"
+	 FROM products
