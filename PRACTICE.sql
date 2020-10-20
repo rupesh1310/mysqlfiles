@@ -666,3 +666,22 @@ ANS- --SOLVING USING WINDOW FUNCTION
 	 FROM salaries AS s
 	 JOIN dept_emp AS de USING (emp_no)
 	 JOIN departments AS d USING (dept_no)
+
+
+
+
+54.  FIRST_VALUE
+
+ANS- --Return a value evaluated against the first row within its partition
+	 -- QUES -> I want to know how my price compares to the item with the
+	 -- lowest price in the same category
+
+	 SELECT
+	 	 prod_id,
+	 	 price,
+	 	 category,
+	 	 first_value(price) OVER(
+	 	 	PARTITION BY category ORDER BY price RANGE BETWEEN UNBOUNDED PRECEDING
+	 	 	AND UNBOUNDED FOLLOWING
+	 	 	)
+	 	 FROM products
