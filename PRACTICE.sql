@@ -856,3 +856,13 @@ ANS-
 	 GROUP BY e.emp_no
 	 ORDER BY e.emp_no;
 
+
+
+
+62. INDEX SYNTAX
+
+ANS- CREATE UNIQUE INDEX <name>
+	 on <table> (column1, column2, ...);
+
+	 -- DELETE A INDEX
+	 DROP INDEX <name>;
