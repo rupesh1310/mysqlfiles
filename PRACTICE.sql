@@ -591,4 +591,12 @@ ANS- SELECT
 
 51. Order By Acting Strange
 
-ANS- 
+ANS- SELECT emp_no,
+			COUNT(salary) OVER(
+				-- ORDER BY emp_no
+				PARTITION BY emp_no
+				)
+	 FROM salaries
+
+
+52. 
