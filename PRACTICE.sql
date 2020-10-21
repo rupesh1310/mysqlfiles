@@ -971,3 +971,19 @@ ANS- 	-- ALWAYS important to put subqueries on the right haside of the
 			WHERE s2.emp_no = s.emp_no
 		)
 		ORDER BY emp_no
+
+
+
+
+66. USING SUBQUERIES
+
+ANS- SELECT
+		first_name,
+		last_name,
+		AGE(birth_date)
+
+	FROM employees
+	WHERE AGE(birth_date) > (SELECT AVG(age(birth_date)) FROM
+		employees)
+
+	
