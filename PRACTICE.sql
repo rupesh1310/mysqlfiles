@@ -866,3 +866,25 @@ ANS- CREATE UNIQUE INDEX <name>
 
 	 -- DELETE A INDEX
 	 DROP INDEX <name>;
+
+	 -- unique index
+	 CREATE UNIQUE INDEX <name>
+	 on <table> (column1);
+
+	 --EXAMPLE
+	 EXPLAIN ANALYZE
+	 SELECT "name", district, countrycode FROM city
+	 WHERE countrycode IN ('TUN', 'BE', 'NL')
+
+
+	 --CREATE AN INDEX
+	 CREATE INDEX idx_countrycode
+	 ON city (countrycode);
+
+
+	 CREATE INDEX idx_countrycode
+	 ON city (countrycode) WHERE countrycode IN ('TUN', 'BE', 'NL');
+
+	 EXPLAIN ANALYZE
+	 SELECT "name", district, countrycode FROM city
+	 WHERE countrycode IN ('TUN', 'BE', 'NL');
