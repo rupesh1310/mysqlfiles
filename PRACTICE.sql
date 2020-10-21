@@ -986,4 +986,16 @@ ANS- SELECT
 	WHERE AGE(birth_date) > (SELECT AVG(age(birth_date)) FROM
 		employees)
 
-	
+	-- SHOW THE TITLE BY SALARY FOR EACH EMPLOYEE
+	SELECT
+		emp_no,
+		salary,
+		from_date,
+		(SELECT title FROM titles AS t
+			--referencing outside - correlated subquery
+			WHERE t.emp_no = s.emp_no AND t.from_date = s.from_date)
+			FROM salaries AS s
+			ORDER BY emp_no
+
+
+
