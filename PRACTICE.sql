@@ -911,6 +911,11 @@ ANS- CREATE [UNIQUE] INDEX <name>
 
 
 
-64. SUBQUERIES
+64. SUBQUERIES VS JOINS
 
-ANS- 
+ANS- SELECT title, price, (SELECT AVG(price)) from products)
+	 as "global average  price"
+	 FROM products
+	 
+	 SELECT AVG(price) FROM products
+ 
