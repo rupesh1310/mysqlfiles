@@ -1095,3 +1095,13 @@ ANS- --EXISTS
 	 		JOIN products AS p1 USING (prod_id)
 	 		GROUP BY p1.category
 	 	)
+
+
+	 -- SINGLE VALUE COMPARISONS -> Subquery must return a single row
+	 -- check comparator against row
+	 SELECT prod_id
+	 FROM products
+	 WHERE category = (
+	 		SELECT category FROM categories
+	 		WHERE categoryname IN ('Comedy')
+	 	)
