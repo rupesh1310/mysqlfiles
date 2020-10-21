@@ -921,4 +921,41 @@ ANS- SELECT title, price, (SELECT AVG(price)) from products)
  	) AS "products_sub"
 
 
-65. 
+
+
+65. SUBQUERIES AS TYPES
+
+ANS- 	-- ALWAYS important to put subqueries on the right haside of the
+		--  operation
+		--always use single row operators with single row subquery
+
+		--subqueries that return  null may not return results
+
+		-- Types -> single row, multiple row, multiple column, corelated,
+		--			nested
+		
+		--SINGLE ROW
+		SELECT name, salary
+		FROM salaries
+		WHERE salary =
+			(SELECT AVG(salary) FROM salaries);
+
+
+		--Multiple row
+		SELECT title, price, category
+		FROM products
+		WHERE category IN(
+			SELECT category FROM categories
+			WHERE categoryname IN ('Comedy', 'Family', 'Classics')
+			)
+
+		-- MULTIPLE COLUMNS
+		SELECT emp_no, salary, dea.avg AS "Department average salary"
+		FROM salaries AS s
+		JOIN dept_emp AS de USING(emp_no)
+		JOIN(
+				SELECT dept_no, AVG(salary) FROM salaries AS s2
+				JOIN dept_emp AS e USING(emp_no)
+				GROUP BY dept_no
+ 			) AS dea USING(dept_no)
+		WHERE salary > dea.avg
