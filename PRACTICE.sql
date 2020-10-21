@@ -999,3 +999,99 @@ ANS- SELECT
 
 
 
+67. Ability to show the most recent employees salary
+	 
+ANS- 
+	--EXPLAIN ANALYZE SELECT
+	SELECT
+		 emp_no,
+		 salary AS "most recent salary",
+		 from_date
+	FROM salaries AS s
+	WHERE from_date = (
+		SELECT MAX(from_date)
+		FROM salaries AS sp
+		WHERE sp.emp_no = s.emp_no
+		)
+	ORDER BY emp_no ASC
+
+
+	-- 2
+
+	--EXPLAIN ANALYZE SELECT
+	SELECT
+		emp_no,
+		salary AS "most recent salary",
+		from_date
+	FROM salaries AS s
+	JOIN last_salary_change AS ls USING (emp_no)
+	WHERE from_date = ls.max
+	ORDER BY emp_no ASC	
+
+
+	SELECT
+		emp_no,
+		salary AS "most recent salary",
+		from_date
+	FROM salaries AS s
+	JOIN (
+			SELECT emp_no, max(from_date) AS "max"
+			FROM salaries AS sp
+			GROUP BY emp_no
+		) AS ls USING (emp_no)
+	WHERE ls.max = from_date
+	ORDER BY emp_no ASC
+
+
+
+68. SUBQUERY Operator
+
+ANS- --EXISTS
+	 SELECT firstname, lastname, income
+	 FROM customers as c
+	 WHERE EXISTS (
+	 	SELECT * FROM orders AS o
+	 	WHERE c.customerid = o.customerid AND totalamount > 400
+	 	) AND income > 90000
+
+
+	 -- IN -> To check if the value is equal to any of the rows in
+	 -- the return (null yields null)
+
+	 SELECT prod_id
+	 FROM products
+	 WHERE category IN (
+	 	SELECT category FROM categories
+	 	WHERE categoryname IN ('Comedy', 'Family', 'Classics')
+	 	)
+
+	 -- NOT IN -> Checks the value is not equal to any of 
+	 -- the rows in the return (null yields null)
+
+	 SELECT prod_id
+	 FROM products
+	 WHERE category IN (
+	 	 SELECT category FROM categories
+	 	 WHERE categoryname NOT IN ('Comedy', 'Family', 'Classics')
+	 	)
+
+	 -- ANY/SOME -> check each row against the operator
+	 --and if any comparison matches return true
+
+	 SELECT prod_id
+	 FROM products
+	 WHERE category = ANY (
+	 		SELECT category FROM categories
+	 		WHERE categoryname IN ('Comedy', 'Family', 'Classics');
+	 	)
+
+	 -- ALL -> check each row against the operator and
+	 -- if all comparisons match return true
+	 SELECT prod_id, title, sales
+	 FROM products
+	 JOIN inventory AS i USING (prod_id)
+	 WHERE i.sales > ALL (
+	 		SELECT AVG(sales) FROM inventory
+	 		JOIN products AS p1 USING (prod_id)
+	 		GROUP BY p1.category
+	 	)
