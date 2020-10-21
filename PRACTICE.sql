@@ -959,3 +959,15 @@ ANS- 	-- ALWAYS important to put subqueries on the right haside of the
 				GROUP BY dept_no
  			) AS dea USING(dept_no)
 		WHERE salary > dea.avg
+
+
+
+		--Co-related -> reference one or more column in outer statements
+		SELECT emp_no, salary, from_date
+		FROM salaries AS s
+		WHERE from_date = (
+			SELECT max(s2.from_date) AS max
+			FROM salaries AS s2
+			WHERE s2.emp_no = s.emp_no
+		)
+		ORDER BY emp_no
