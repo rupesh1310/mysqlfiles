@@ -915,7 +915,10 @@ ANS- CREATE [UNIQUE] INDEX <name>
 
 ANS- SELECT title, price, (SELECT AVG(price)) from products)
 	 as "global average  price"
-	 FROM products
-	 
-	 SELECT AVG(price) FROM products
- 
+	 -- FROM products
+	 FROM(
+	 SELECT * FROM products WHERE price < 10
+ 	) AS "products_sub"
+
+
+65. 
