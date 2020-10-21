@@ -1198,3 +1198,19 @@ CREATE TABLE enrollment (
 	enrollment_date DATE NOT NULL,
 	CONSTRAINT pk_enrollment PRIMARY KEY (course_id, student_id)
 );
+
+
+
+
+-- INSERT DATA
+INSERT INTO student (
+	first_name,
+	last_name,
+	email,
+	date_of_birth
+) VALUES (
+	'Mo',
+	'Bini',
+	'mo@binni.io',
+	'1992-11-13'::DATE
+);
