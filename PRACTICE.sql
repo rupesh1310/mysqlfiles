@@ -896,4 +896,10 @@ ANS- CREATE UNIQUE INDEX <name>
 ANS- CREATE [UNIQUE] INDEX <name>
 	 ON <table> USING <method> (column1, ....)
 
+	 EXPLAIN ANALYZE
+	 SELECT "name", district, countrycode
+	 FROM city
+	 WHERE countrycode = 'BEL' AND countrycode = 'TUN' AND 
+	 countrycode = 'NLD';
+
 	 
