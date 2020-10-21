@@ -888,3 +888,12 @@ ANS- CREATE UNIQUE INDEX <name>
 	 EXPLAIN ANALYZE
 	 SELECT "name", district, countrycode FROM city
 	 WHERE countrycode IN ('TUN', 'BE', 'NL');
+
+
+
+63. INDEX ALGORITHMS
+
+ANS- CREATE [UNIQUE] INDEX <name>
+	 ON <table> USING <method> (column1, ....)
+
+	 
