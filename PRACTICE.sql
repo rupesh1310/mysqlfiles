@@ -1130,3 +1130,18 @@ CREATE TABLE student (
 	date_of_birth DATE NOT NULL,
 	CONSTRAINT pk_student_id PRIMARY_KEY (student_id)	
 );
+
+
+
+--CREATING CUSTOM DATA TYPES AND DOMAINS
+
+CREATE DOMAIN Rating SMALLINT CHECK (VALUE > 0 AND VALUE <= 5);
+CREATE TYPE Feedback (
+	student_id UUID,
+	rating Rating,
+	feedback TEXT
+);
+
+
+
+
