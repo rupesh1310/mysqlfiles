@@ -902,4 +902,15 @@ ANS- CREATE [UNIQUE] INDEX <name>
 	 WHERE countrycode = 'BEL' AND countrycode = 'TUN' AND 
 	 countrycode = 'NLD';
 
-	 
+	 -- GIN ALGORITHM "generalized inverted index"
+
+
+
+	 --GIST "generalized search tree" useful in searching geometric data
+	 --and full text
+
+
+
+64. SUBQUERIES
+
+ANS- 
