@@ -1244,7 +1244,14 @@ INSERT INTO course (
 	"name",
 	description
 ) VALUES (
-	'SQL',
-	'A database management language'	
+	'SQL Zero to Mastery',
+	'The #1 resource for SQL mastery'	
 )
 
+
+
+ALTER TABLE course ALTER COLUMN subject_id SET NOT NULL;
+
+UPDATE course
+SET subject_id = 'f00ae49e-dac9-47b0-8c2a-4d82b50bb123'
+WHERE subject_id IS NULL;
