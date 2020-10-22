@@ -1311,3 +1311,24 @@ WHERE course_id = '7871de83-47a0-4895-a987-78008237ea46'
 
 
 
+
+
+CREATE TABLE feedback (
+	student_id UUID NOT NULL REFERENCES student(student_id),
+	course_id UUID NOT NULL REFERENCES course(course_id),
+	feedback TEXT,
+	rating rating,
+	CONSTRAINT pk_feedback PRIMARY KEY (student_id, course_id)
+);
+
+
+
+INSERT INTO feedback (
+	student_id,
+	course_id,
+	feedback,
+	rating
+) VALUES (
+	'',
+	'7871de83-47a0-4895-a987-78008237ea46'
+)
