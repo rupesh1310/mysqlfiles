@@ -1214,3 +1214,37 @@ INSERT INTO student (
 	'mo@binni.io',
 	'1992-11-13'::DATE
 );
+
+
+
+
+--CREATING A COURSE
+INSERT INTO subject (
+	subject,
+	description
+) VALUES (
+	'SQL Zero to Mastery',
+	'The art of SQL Mastery'	
+)
+
+--DELETE
+DELETE FROM subject WHERE subject = 'SQL Zero to Mastery';
+
+
+INSERT INTO subject (
+	subject,
+	description
+) VALUES (
+	'SQL',
+	'A database management language'	
+)
+
+
+INSERT INTO course (
+	"name",
+	description
+) VALUES (
+	'SQL',
+	'A database management language'	
+)
+
