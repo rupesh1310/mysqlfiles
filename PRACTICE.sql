@@ -1329,6 +1329,8 @@ INSERT INTO feedback (
 	feedback,
 	rating
 ) VALUES (
-	'',
-	'7871de83-47a0-4895-a987-78008237ea46'
+	'00cde49a-6f0f-41df-b843-553f07fff08a',
+	'7871de83-47a0-4895-a987-78008237ea46',
+	'Well this was great!',
+	4
 )
