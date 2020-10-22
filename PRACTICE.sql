@@ -1216,6 +1216,19 @@ INSERT INTO student (
 );
 
 
+INSERT INTO teacher (
+	first_name,
+	last_name,
+	email,
+	date_of_birth
+) VALUES (
+	'Mo',
+	'Bini',
+	'mo@binni.io',
+	'1992-11-13'::DATE
+);
+
+
 
 
 --CREATING A COURSE
@@ -1255,3 +1268,19 @@ ALTER TABLE course ALTER COLUMN subject_id SET NOT NULL;
 UPDATE course
 SET subject_id = 'f00ae49e-dac9-47b0-8c2a-4d82b50bb123'
 WHERE subject_id IS NULL;
+
+
+
+INSERT INTO course ("name", description) VALUES ('name',
+'description');
+
+
+--TEACHER_ID
+
+
+UPDATE course
+SET teacher_id = '3d4128ee-4daa-40c6-981d-0b100eca56bb'
+WHERE teacher_id IS NULL;
+
+
+ALTER TABLE course ALTER COLUMN teacher_id SET NOT NULL;
