@@ -1289,3 +1289,9 @@ ALTER TABLE course ALTER COLUMN teacher_id SET NOT NULL;
 
 
 --ADDING FEEDBACK TO A COURSE
+INSERT INTO enrollment (student_id, course_id,
+enrollment_date) VALUES (
+	'00cde49a-6f0f-41df-b843-553f07fff08a',
+	'7871de83-47a0-4895-a987-78008237ea46',
+	NOW()::DATE
+);
