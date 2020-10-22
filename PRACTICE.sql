@@ -1295,3 +1295,19 @@ enrollment_date) VALUES (
 	'7871de83-47a0-4895-a987-78008237ea46',
 	NOW()::DATE
 );
+
+
+
+UPDATE course
+SET feedback = array_append(
+	feedback,
+	ROW(
+		'00cde49a-6f0f-41df-b843-553f07fff08a',
+		5,
+		'Great course!'
+	)::feedback
+)
+WHERE course_id = '7871de83-47a0-4895-a987-78008237ea46'
+
+
+
