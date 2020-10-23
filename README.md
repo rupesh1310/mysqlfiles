@@ -5,7 +5,7 @@
 SQL, Database Management & Design
   <br>
 </h1>
-<h4 align="center">My SQL Practice Files</h4>
+<h4 align="center">Learned to work with databases like PostgreSQL, MySQL + more. With Exercises!</h4>
 
 
 
